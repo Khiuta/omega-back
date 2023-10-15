@@ -29,6 +29,50 @@ class CharacterController {
       return console.log(e);
     }
   }
+
+  async update(req, res) {
+    try {
+      let {
+        current_pv,
+        current_san,
+        current_pe,
+        defense,
+        protection,
+        resistence,
+        equipments,
+        others,
+      } = req.body;
+
+      const search = await Character.findOne({ where: { id: req.params.id } });
+
+      if (current_pv === '') current_pv = search.current_pv;
+      if (current_san === '') current_san = search.current_san;
+      if (current_pe === '') current_pe = search.current_pe;
+      if (defense === '') defense = search.defense;
+      if (protection === '') protection = search.protection;
+      if (resistence === '') resistence = search.resistence;
+      if (equipments === '') equipments = search.equipments;
+      if (others === '') others = search.others;
+
+      const character = await Character.update({
+        current_pv,
+        current_san,
+        current_pe,
+        defense,
+        protection,
+        resistence,
+        equipments,
+        others,
+      }, {
+        where: {
+          id: req.params.id,
+        },
+      });
+      return res.status(200).json(character);
+    } catch (e) {
+      return console.log(e);
+    }
+  }
 }
 
 export default new CharacterController();

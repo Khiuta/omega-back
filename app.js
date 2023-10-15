@@ -1,4 +1,6 @@
 import dotenv from 'dotenv';
+import cors from 'cors';
+import helmet from 'helmet';
 
 dotenv.config();
 import './src/database';
@@ -13,6 +15,22 @@ import intelectRoutes from './src/routes/intelectRoutes';
 import presenceRoutes from './src/routes/presenceRoutes';
 import vigorRoutes from './src/routes/vigorRoutes';
 import agilityRoutes from './src/routes/agilityRoutes';
+import tokenRoutes from './src/routes/tokenRoutes';
+
+const whiteList = [
+  'http://localhost:3000',
+  'http://192.168.0.27:3000',
+];
+
+const corsOptions = {
+  origin(origin, callback) {
+    if (whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS.'));
+    }
+  },
+};
 
 class App {
   constructor() {
@@ -22,6 +40,8 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors(corsOptions));
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
   }
@@ -36,6 +56,7 @@ class App {
     this.app.use('/presence', presenceRoutes);
     this.app.use('/vigor', vigorRoutes);
     this.app.use('/agility', agilityRoutes);
+    this.app.use('/token', tokenRoutes);
   }
 }
 

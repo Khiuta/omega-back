@@ -7,7 +7,7 @@ export default class Agility extends Model {
       value: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       acrobacy_training: {
         type: Sequelize.STRING,

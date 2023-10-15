@@ -68,6 +68,14 @@ export default class Character extends Model {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
+      max_pe: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
+      current_pe: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
       defense: {
         type: Sequelize.INTEGER,
         defaultValue: 0,

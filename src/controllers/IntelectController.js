@@ -1,6 +1,18 @@
 import Intelect from '../models/Intelect';
+import Character from '../models/Character';
 
 class IntelectController {
+  async index(req, res) {
+    const intelects = await Intelect.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+    }, {
+      include: Character,
+    });
+    return res.status(200).json(intelects);
+  }
+
   async store(req, res) {
     try {
       const newIntelect = await Intelect.create(req.body);

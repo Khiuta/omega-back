@@ -7,7 +7,7 @@ export default class Vigor extends Model {
       value: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       fortitude_training: {
         type: Sequelize.STRING,

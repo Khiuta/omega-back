@@ -1,6 +1,18 @@
 import Agility from '../models/Agility';
+import Character from '../models/Character';
 
 class AgilityController {
+  async index(req, res) {
+    const strengths = await Agility.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+    }, {
+      include: Character,
+    });
+    return res.status(200).json(strengths);
+  }
+
   async store(req, res) {
     try {
       const newAgility = await Agility.create(req.body);

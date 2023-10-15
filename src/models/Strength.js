@@ -6,7 +6,7 @@ export default class Strength extends Model {
     super.init({
       value: {
         type: Sequelize.INTEGER,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       athleticism_training: {
         type: Sequelize.STRING,

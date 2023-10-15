@@ -12,6 +12,10 @@ export default class Item extends Model {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
+      description: {
+        type: Sequelize.TEXT,
+        defaultValue: '',
+      },
       character_id: {
         type: Sequelize.INTEGER,
         defaultValue: null,

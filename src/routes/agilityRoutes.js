@@ -2,9 +2,12 @@ import { Router } from 'express';
 
 const router = Router();
 
+import loginRequired from '../middlewares/loginRequired';
+
 import agilityController from '../controllers/AgilityController';
 
-router.put('/:id', agilityController.update);
-router.post('/', agilityController.store);
+router.get('/:id', loginRequired, agilityController.index);
+router.put('/:id', loginRequired, agilityController.update);
+router.post('/', loginRequired, agilityController.store);
 
 export default router;

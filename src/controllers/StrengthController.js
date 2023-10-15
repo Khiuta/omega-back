@@ -1,6 +1,18 @@
 import Strength from '../models/Strength';
+import Character from '../models/Character';
 
 class StrengthController {
+  async index(req, res) {
+    const strengths = await Strength.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+    }, {
+      include: Character,
+    });
+    return res.status(200).json(strengths);
+  }
+
   async store(req, res) {
     try {
       const newStrength = await Strength.create(req.body);

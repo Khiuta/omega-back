@@ -7,7 +7,7 @@ export default class Presence extends Model {
       value: {
         type: Sequelize.INTEGER,
         allowNull: true,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       taming_training: {
         type: Sequelize.STRING,

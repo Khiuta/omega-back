@@ -1,6 +1,18 @@
 import Vigor from '../models/Vigor';
+import Character from '../models/Character';
 
 class VigorController {
+  async index(req, res) {
+    const strengths = await Vigor.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+    }, {
+      include: Character,
+    });
+    return res.status(200).json(strengths);
+  }
+
   async store(req, res) {
     try {
       const newVigor = await Vigor.create(req.body);

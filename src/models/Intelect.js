@@ -6,7 +6,7 @@ export default class Intelect extends Model {
     super.init({
       value: {
         type: Sequelize.INTEGER,
-        defaultValue: 0,
+        defaultValue: 1,
       },
       science_training: {
         type: Sequelize.STRING,

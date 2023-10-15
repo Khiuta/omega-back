@@ -1,6 +1,18 @@
 import Presence from '../models/Presence';
+import Character from '../models/Character';
 
 class PresenceController {
+  async index(req, res) {
+    const strengths = await Presence.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+    }, {
+      include: Character,
+    });
+    return res.status(200).json(strengths);
+  }
+
   async store(req, res) {
     try {
       const newPresence = await Presence.create(req.body);

@@ -4,6 +4,11 @@ import Character from '../models/Character';
 class AttackController {
   async index(req, res) {
     const attacks = await Attack.findAll({
+      where: {
+        character_id: req.params.id,
+      },
+      order: [['id', 'ASC']],
+    }, {
       include: Character,
     });
     return res.status(200).json(attacks);
@@ -30,13 +35,20 @@ class AttackController {
 
   async update(req, res) {
     try {
-      const {
+      let {
         name,
         test,
         damage,
         others,
-        character_id,
       } = req.body;
+      const { character_id } = req.body;
+
+      const search = await Attack.findOne({ where: { id: req.params.id } });
+
+      if (name === '') name = search.name;
+      if (test === '') test = search.test;
+      if (damage === '') damage = search.damage;
+      if (others === '') others = search.others;
 
       const attack = await Attack.update({
         name,
