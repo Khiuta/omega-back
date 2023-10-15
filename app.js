@@ -21,6 +21,7 @@ import homeRoutes from './src/routes/homeRoutes';
 const whiteList = [
   'http://localhost:3000',
   'http://192.168.0.27:3000',
+  'https://omega-front-khiuta.vercel.app',
 ];
 
 const corsOptions = {
