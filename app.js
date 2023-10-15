@@ -16,6 +16,7 @@ import presenceRoutes from './src/routes/presenceRoutes';
 import vigorRoutes from './src/routes/vigorRoutes';
 import agilityRoutes from './src/routes/agilityRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
+import homeRoutes from './src/routes/homeRoutes';
 
 const whiteList = [
   'http://localhost:3000',
@@ -57,6 +58,7 @@ class App {
     this.app.use('/vigor', vigorRoutes);
     this.app.use('/agility', agilityRoutes);
     this.app.use('/token', tokenRoutes);
+    this.app.use('/', homeRoutes);
   }
 }
 
