@@ -6,7 +6,7 @@ import loginRequired from '../middlewares/loginRequired';
 
 import characterController from '../controllers/CharacterController';
 
-router.get('/', characterController.index);
+router.get('/', loginRequired, characterController.index);
 router.post('/', loginRequired, characterController.store);
 router.put('/:id', loginRequired, characterController.update);
 
