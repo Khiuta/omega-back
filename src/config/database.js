@@ -7,7 +7,7 @@ module.exports = {
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
-  ssl: 'require',
+  sslmode: true,
   connection: {
     options: `project=${process.env.ENDPOINT_ID}`,
   },
