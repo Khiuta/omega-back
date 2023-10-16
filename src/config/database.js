@@ -7,7 +7,6 @@ module.exports = {
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
-  sslmode: true,
   connection: {
     options: `project=${process.env.ENDPOINT_ID}`,
   },
@@ -19,6 +18,9 @@ module.exports = {
     updatedAt: 'updated_at',
   },
   dialectOptions: {
+    ssl: {
+      require: true,
+    },
     timezone: 'America/Sao_Paulo',
   },
   timezone: 'America/Sao_Paulo',
