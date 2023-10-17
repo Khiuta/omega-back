@@ -40,7 +40,7 @@ export default class Character extends Model {
         type: Sequelize.STRING,
         defaultValue: '',
       },
-      class: {
+      character_class: {
         type: Sequelize.STRING,
         defaultValue: '',
       },

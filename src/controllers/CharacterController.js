@@ -33,6 +33,13 @@ class CharacterController {
   async update(req, res) {
     try {
       let {
+        origin,
+        character_class,
+        level,
+        movement,
+        max_pv,
+        max_san,
+        max_pe,
         current_pv,
         current_san,
         current_pe,
@@ -45,6 +52,13 @@ class CharacterController {
 
       const search = await Character.findOne({ where: { id: req.params.id } });
 
+      if (origin === '') origin = search.origin;
+      if (character_class === '') character_class = search.character_class;
+      if (level === '') level = search.level;
+      if (movement === '') movement = search.movement;
+      if (max_pv === '') max_pv = search.max_pv;
+      if (max_san === '') max_san = search.max_san;
+      if (max_pe === '') max_pe = search.max_pe;
       if (current_pv === '') current_pv = search.current_pv;
       if (current_san === '') current_san = search.current_san;
       if (current_pe === '') current_pe = search.current_pe;
@@ -55,6 +69,13 @@ class CharacterController {
       if (others === '') others = search.others;
 
       const character = await Character.update({
+        origin,
+        character_class,
+        level,
+        movement,
+        max_pv,
+        max_san,
+        max_pe,
         current_pv,
         current_san,
         current_pe,
